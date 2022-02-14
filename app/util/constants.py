@@ -1,3 +1,6 @@
+from config import settings
+
+
 class BColors:
     HEADER = "\033[95m"
     OKBLUE = "\033[94m"
@@ -25,6 +28,6 @@ class BColors:
         )
 
 
-SECRET_KEY = "3ae90d9094fae6cd8f7d16ab3cb2fb300866080cba5c01601ab5cf0caf296541"
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 120
+SECRET_KEY = settings.fastapi_secret_key
+ALGORITHM = settings.fastapi_access_token_algorithm
+ACCESS_TOKEN_EXPIRE_MINUTES = settings.fastapi_access_token_ttl
