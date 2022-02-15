@@ -51,7 +51,7 @@ def vote(
 
         if found_vote_query is None:
             print(
-                f"{constants.BColors.FAIL}ERROR:    {constants.BColors.WARNING}Was unable to find post: {id}, no vote removed."
+                f"{constants.BColors.FAIL}ERROR:    {constants.BColors.WARNING}Vote:{vote.post_id} not found, no vote removed."
             )
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
@@ -64,7 +64,7 @@ def vote(
             )
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
-                detail="You do not have permission to perform that action!",
+                detail="You do not have permission to perform that action! This vote doesn't belong to you.",
             )
 
         vote_query.delete(synchronize_session=False)

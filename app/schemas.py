@@ -54,6 +54,12 @@ class Post(PostBase):
         orm_mode = True
 
 
+# ****** Response Schemas with Votes Join ******
+class PostOut(BaseModel):
+    Post: Post
+    votes: int
+
+
 # *********************** TOKEN SCHEMA ***********************
 # ****** Base Schemas ******
 class Token(BaseModel):
