@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 
-import models
-from database import engine
-from routers import authn, post, user, vote
+# import models
+# from database import engine
+from app.routers import authn, post, user, vote
 
 # Used this initially to create the tables in the database, now we transitioned to Alembic,
 # models.Base.metadata.create_all(bind=engine)

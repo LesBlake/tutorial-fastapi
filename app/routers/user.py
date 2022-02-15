@@ -1,19 +1,11 @@
 from typing import List
 
 # import models
-import crud
-import schemas
-from database import get_db
+from app import crud, schemas
+from app.database import get_db
+from app.util import utils  # , constants
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from util import utils  # , constants
-
-# from .. import schemas
-# from .. import models
-# from .. import crud
-# from ..database import get_db
-# from ..util import constants, utils
-
 
 router = APIRouter(prefix="/users", tags=["Users"])
 

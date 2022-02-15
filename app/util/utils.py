@@ -1,9 +1,8 @@
 from datetime import datetime, timedelta
 from typing import Optional
 
-import crud
-import database
-import schemas
+from app import crud, database, schemas
+from app.util import constants
 from fastapi import Depends, status
 from fastapi.exceptions import HTTPException
 from fastapi.security import OAuth2PasswordBearer
@@ -11,8 +10,6 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from pydantic.networks import EmailStr
 from sqlalchemy.orm import Session
-
-from util import constants
 
 # from app import schemas
 # from . import constants
