@@ -20,7 +20,7 @@ class UserCreate(UserBase):
 # ****** Response Schemas ******
 class User(UserBase):
     id: int
-    create_at: datetime
+    created_at: datetime
 
     class Config:
         orm_mode = True
@@ -46,7 +46,7 @@ class PostCreate(PostBase):
 # ****** Response Schemas ******
 class Post(PostBase):
     id: int
-    create_at: datetime
+    created_at: datetime
     owner_id: int
     owner: User
 
