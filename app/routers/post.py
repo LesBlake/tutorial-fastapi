@@ -4,17 +4,9 @@ import models
 import schemas
 from database import get_db
 from fastapi import APIRouter, Depends, HTTPException, status
-
-# from pydantic import utils
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 from util import constants, utils
-
-# from .. import schemas
-# from .. import models
-# from ..database import get_db
-# from ..util import constants, utils
-
 
 router = APIRouter(prefix="/posts", tags=["Posts"])
 
@@ -43,14 +35,6 @@ def get_posts(
     search: Optional[str] = "",
 ):
 
-    # posts = (
-    #    db.query(models.Post)
-    #    .filter(models.Post.title.contains(search))
-    #    .limit(limit)
-    #    .offset(skip)
-    #    .all()
-    # )
-
     posts_votes = (
         db.query(models.Post, func.count(models.Vote.post_id).label("votes"))
         .join(models.Vote, models.Post.id == models.Vote.post_id, isouter=True)
@@ -61,15 +45,6 @@ def get_posts(
         .all()
     )
 
-    # if limit == 0 and skip == 0:
-    #    posts = db.query(models.Post).all()
-    # elif limit > 0 and skip == 0:
-    #    posts = db.query(models.Post).limit(limit).all()
-    # elif limit > 0 and skip > 0:
-    #     posts = db.query(models.Post).filter(models.Post.title.contains(search)).limit(limit).offset(skip).all()
-    # elif limit == 0 and skip > 0:
-    #    posts = db.query(models.Post).offset(skip).all()
-
     return posts_votes
 
 
@@ -79,8 +54,6 @@ def get_post(
     db: Session = Depends(get_db),
     user_object: object = Depends(utils.get_current_user),
 ):
-
-    # post = db.query(models.Post).filter(models.Post.id == id).first()
 
     post_votes = (
         db.query(models.Post, func.count(models.Vote.post_id).label("votes"))

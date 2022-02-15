@@ -4,7 +4,8 @@ import models
 from database import engine
 from routers import authn, post, user, vote
 
-models.Base.metadata.create_all(bind=engine)
+# Used this initially to create the tables in the database, now we transitioned to Alembic,
+# models.Base.metadata.create_all(bind=engine)
 
 # *********************** FastAPI instance recteated ***********************
 app = FastAPI()
