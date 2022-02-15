@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Optional
 
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, conint
 
 # *********************** Pydantic models/schema for API verificaiton ***********************
 
@@ -64,3 +64,10 @@ class Token(BaseModel):
 class TokenData(BaseModel):
     id: Optional[str] = None
     email: Optional[EmailStr] = None
+
+
+# *********************** SCHEMA FOR VOTE ***********************
+# ****** Base Schemas ******
+class Vote(BaseModel):
+    post_id: int
+    dir: conint(le=1)
