@@ -1,0 +1,30 @@
+version: "3"
+services:
+  api:
+    image: lesblake/fastapi-tut
+    depends_on:
+      - postgres
+    ports:
+      - 80:8000
+    # command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    environment:
+      - fastapi_db_url=${fastapi_db_url}
+      - fastapi_db_port=${fastapi_db_port}
+      - fastapi_db_user=${fastapi_db_user}
+      - fastapi_db_password=${fastapi_db_password}
+      - fastapi_db_name=${fastapi_db_name}
+      - fastapi_SECRET_KEY=${fastapi_SECRET_KEY}
+      - fastapi_ACCESS_TOKEN_ALGORITHM=${fastapi_ACCESS_TOKEN_ALGORITHM}
+      - fastapi_ACCESS_TOKEN_TTL=${astapi_ACCESS_TOKEN_TTL}
+
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=${fastapi_db_password}
+      - POSTGRES_DB=${fastapi_db_name}
+
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+volumes:
+  postgres-db:
