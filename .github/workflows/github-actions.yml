@@ -13,7 +13,7 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: Run PyTest on code
         run: pip --version
-        run: python --version
+      - run: python --version
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
