@@ -59,7 +59,7 @@ def vote(
 
         if found_vote_query.user_id != user_object.id:
             print(
-                f"{constants.BColors.FAIL}ERROR:    {constants.BColors.WARNING}You do not have permission to perform that action!"
+                f"{constants.BColors.FAIL}ERROR:    {constants.BColors.WARNING}Permission Denied to perform that action!"
             )
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,

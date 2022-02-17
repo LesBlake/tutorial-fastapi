@@ -12,8 +12,8 @@ class Settings(BaseSettings):
     fastapi_access_token_ttl: int
 
     class Config:
-        env_file = "/Users/les/development/fastapi/app/.env"
-        # env_file = ".env"
+        # env_file = "/Users/les/development/fastapi/app/.env"
+        env_file = ".env"
 
 
 settings = Settings()
