@@ -1,7 +1,7 @@
 name: Build and Deploy Code
 on: [push, pull_request]
 jobs:
-  job1:
+  myjob:
     runs-on: ubuntu-latest
     env:
       fastapi_db_url: localhost
