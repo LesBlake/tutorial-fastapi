@@ -1,7 +1,8 @@
 name: Build and Deploy Code
 on: [push, pull_request]
 jobs:
-  Build-Test:
+  job1:
+    runs-on: ubuntu-latest
     env:
       fastapi_db_url: localhost
       fastapi_db_port: 5432
@@ -11,7 +12,6 @@ jobs:
       fastapi_SECRET_KEY: 3ae90d9094fae6cd8f7d16ab3cb2fb300866080cba5c01601ab5cf0caf296541
       fastapi_ACCESS_TOKEN_ALGORITHM: HS256
       fastapi_ACCESS_TOKEN_TTL: 120
-    runs-on: ubuntu-latest
     steps:
       - name: setup postgres
         uses: harmon758/postgresql-action@v1
