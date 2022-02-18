@@ -1,7 +1,7 @@
 name: Build and Deploy Code
 on: [push, pull_request]
 jobs:
-  job1:
+  Build-Test:
     env:
       fastapi_db_url: localhost
       fastapi_db_port: 5432
