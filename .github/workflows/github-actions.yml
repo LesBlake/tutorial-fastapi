@@ -15,12 +15,26 @@ jobs:
       fastapi_SECRET_KEY: ${{ secrets.FASTAPI_SECRET_KEY }}
       fastapi_ACCESS_TOKEN_ALGORITHM: ${{ secrets.FASTAPI_ACCESS_TOKEN_ALGORITHM }}
       fastapi_ACCESS_TOKEN_TTL: ${{ secrets.FASTAPI_ACCESS_TOKEN_TTL }}
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: ${{ secrets.FASTAPI_DB_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.FASTAPI_DB_NAME }}_test
+        ports:
+          - 5432:5432
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     runs-on: ubuntu-latest
     steps:
-      - name: setup postgres
-        uses: harmon758/postgresql-action@v1
-        with:
-          postgresql version: "11" # See https://hub.docker.com/_/postgres for available versions
+      #  - name: setup postgres
+      #    uses: harmon758/postgresql-action@v1
+      #    with:
+      #      postgresql version: "11" # See https://hub.docker.com/_/postgres for available versions
       - name: Check out repository code
         uses: actions/checkout@v2
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
