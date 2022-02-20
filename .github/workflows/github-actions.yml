@@ -6,14 +6,14 @@ jobs:
   myjob:
     runs-on: ubuntu-latest
     env:
-      fastapi_db_url: localhost
-      fastapi_db_port: 5432
-      fastapi_db_user: postgres
-      fastapi_db_password: password123
-      fastapi_db_name: fastapi
-      fastapi_SECRET_KEY: 3ae90d9094fae6cd8f7d16ab3cb2fb300866080cba5c01601ab5cf0caf296541
-      fastapi_ACCESS_TOKEN_ALGORITHM: HS256
-      fastapi_ACCESS_TOKEN_TTL: 120
+      fastapi_db_url: ${{ secrets.FASTAPI_DB_URL }}
+      fastapi_db_port: ${{ secrets.FASTAPI_DB_PORT }}
+      fastapi_db_user: ${{ secrets.FASTAPI_DB_USER }}
+      fastapi_db_password: ${{ secrets.FASTAPI_DB_PASSWORD }}
+      fastapi_db_name: ${{ secrets.FASTAPI_DB_NAME }}
+      fastapi_SECRET_KEY: ${{ secrets.FASTAPI_SECRET_KEY }}
+      fastapi_ACCESS_TOKEN_ALGORITHM: ${{ secrets.FASTAPI_ACCESS_TOKEN_ALGORITHM }}
+      fastapi_ACCESS_TOKEN_TTL: ${{ secrets.FASTAPI_ACCESS_TOKEN_TTL }}
     steps:
       - name: setup postgres
         uses: harmon758/postgresql-action@v1
