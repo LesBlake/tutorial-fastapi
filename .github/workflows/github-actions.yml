@@ -4,7 +4,8 @@ on: [push, pull_request]
 
 jobs:
   myjob:
-    runs-on: ubuntu-latest
+    environment:
+      name: test
     env:
       fastapi_db_url: ${{ secrets.FASTAPI_DB_URL }}
       fastapi_db_port: ${{ secrets.FASTAPI_DB_PORT }}
@@ -14,6 +15,7 @@ jobs:
       fastapi_SECRET_KEY: ${{ secrets.FASTAPI_SECRET_KEY }}
       fastapi_ACCESS_TOKEN_ALGORITHM: ${{ secrets.FASTAPI_ACCESS_TOKEN_ALGORITHM }}
       fastapi_ACCESS_TOKEN_TTL: ${{ secrets.FASTAPI_ACCESS_TOKEN_TTL }}
+    runs-on: ubuntu-latest
     steps:
       - name: setup postgres
         uses: harmon758/postgresql-action@v1
