@@ -3,7 +3,7 @@ from app import schemas
 
 def test_root(client):
     resp = client.get("/")
-    assert resp.json().get("message") == "Welcome to my API."
+    #    assert resp.json().get("message") == "Welcome to my API."
     assert resp.status_code == 200
 
 
